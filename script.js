@@ -1,27 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const form = document.createElement("form");
-  form.innerHTML = `
-    <label for="name">Name:</label>
-    <input type="text" id="name" placeholder="Enter your name" required />
-    
-    <label for="age">Age:</label>
-    <input type="number" id="age" placeholder="Enter your age" required />
-
-    <button type="submit" id="btn">Submit</button>
-  `;
-
-  document.body.appendChild(form);
+  const form = document.getElementById("ageForm");
 
   form.addEventListener("submit", function (event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); // Prevent default form submission
 
     const name = document.getElementById("name").value.trim();
-    const age = parseInt(document.getElementById("age").value);
+    const ageInput = document.getElementById("age").value.trim();
 
-    if (!name || isNaN(age)) {
+    if (!name || ageInput === "") {
       alert("Please enter valid details.");
       return;
     }
+
+    const age = parseInt(ageInput, 10);
 
     new Promise((resolve, reject) => {
       setTimeout(() => {
