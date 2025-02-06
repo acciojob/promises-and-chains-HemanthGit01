@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const name = document.getElementById("name").value.trim();
     const ageInput = document.getElementById("age").value.trim();
 
-    if (!name || ageInput === "") {
+    // Validate inputs
+    if (!name || !ageInput || isNaN(ageInput)) {
       alert("Please enter valid details.");
       return;
     }
@@ -23,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }, 4000); // 4-second delay
     })
-      .then((message) => alert(message))
-      .catch((error) => alert(error));
+      .then(alert) // Directly passing alert as a callback
+      .catch(alert);
   });
 });
